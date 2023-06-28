@@ -1,11 +1,19 @@
-<h1> Publicacion </h1>
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+
+
+<h1> Articulo </h1>
 
 <ul>
-{% for publicacion in object_list %}
+{% for articulo in object_list %}
 
-    <li><a href="{% url 'publicacion-detalle' publicacion.pk %}">{{publicacion.titulo}}</a> - {{publicacion.autor.first_name}} 
-    {{publicacion.autor.last_name}}<br/>     
-    {{publicacion.cuerpo}} </li>
+    <li><a href="{% url 'articulo-detalle' articulo.pk %}">{{articulo.titulo}}</a> - {{articulo.autor.first_name}} 
+    {{articulo.autor.last_name}}<br/>     
+    {{articulo.cuerpo}} </li>
 
 {% endfor %}
 </ul>
+
+{% endblock %}
