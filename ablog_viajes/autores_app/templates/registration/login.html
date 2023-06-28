@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
-{% block titulo  %} Crear un nuevo articulo {% endblock %}
+{% block titulo  %}Inicio de Sesion{% endblock %}
 {% block contenido %}
 
 
 
-<h1> Agregar articulo </h1>
+<h1>Inicio de sesion</h1>
 <br/> <br/> 
 
 <div class="form-group">
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <button class="btn btn-secondary">Publicar</button>
+    <button class="btn btn-secondary">Iniciar sesion</button>
 </div>
 
 {% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block titulo  %} Eliminar articulo {% endblock %}
+{% block contenido %}
+
+
+
+<h1> Eliminar articulo </h1>
+<br/> <br/> 
+<h3> Eliminar {{ articulo.titulo }} </h3>
+
+
+<div class="form-group">
+<form method="POST">
+    {% csrf_token %}
+    <strong>Estas seguro? :(</strong><br/>
+    <button class="btn btn-secondary">Eliminar</button>
+</div>
+
+{% endblock %}
