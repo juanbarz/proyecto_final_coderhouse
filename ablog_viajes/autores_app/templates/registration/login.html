@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
-{% block titulo  %}Inicio de Sesion{% endblock %}
+{% block titulo  %}Inicio de Sesión{% endblock %}
 {% block contenido %}
 
 
 
-<h1>Inicio de sesion</h1>
+<h1>Inicio de sesión</h1>
 <br/> <br/> 
 
 <div class="form-group">
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <button class="btn btn-secondary">Iniciar sesion</button>
+    <button class="btn btn-secondary">Iniciar sesión</button>
 </div>
 
 {% endblock %}

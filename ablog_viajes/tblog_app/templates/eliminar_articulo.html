@@ -3,7 +3,7 @@
 {% block contenido %}
 
 
-
+{%if user.is_authenticated %}
 <h1> Eliminar articulo </h1>
 <br/> <br/> 
 <h3> Eliminar {{ articulo.titulo }} </h3>
@@ -15,5 +15,10 @@
     <strong>Estas seguro? :(</strong><br/>
     <button class="btn btn-secondary">Eliminar</button>
 </div>
+
+{% else %}
+No tenés permiso para acceder a esta pagina :(
+# AGREGAR IMAGEN # 
+{% endif %}
 
 {% endblock %}

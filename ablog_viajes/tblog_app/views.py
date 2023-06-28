@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Articulo
+from .models import Articulo, Categoria
 from .forms import ArticuloForm, EditarForm
 from django.urls import reverse_lazy
 
@@ -22,6 +22,10 @@ class AgregarArticuloView(CreateView):
     template_name = 'agregar_articulo.html'
     #fields = '__all__'
 
+class AgregarCategoriaView(CreateView):
+    model = Categoria
+    template_name = 'agregar_pais.html'
+    fields = '__all__'
 
 class EditarArticuloView(UpdateView):
     model = Articulo
@@ -34,3 +38,8 @@ class EliminarArticuloView(DeleteView):
     model = Articulo
     template_name = 'eliminar_articulo.html'
     success_url = reverse_lazy('home')
+
+
+def PaisView(request, paisx):
+    categoria_articulo = Articulo.objects.filter(pais=paisx)
+    return render(request, 'paises.html',{'paisx':paisx.title(), 'categoria_articulo':categoria_articulo})

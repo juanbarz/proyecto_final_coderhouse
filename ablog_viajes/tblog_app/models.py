@@ -9,6 +9,7 @@ class Articulo(models.Model):
     autor = models.ForeignKey(User, on_delete=models.CASCADE) #si borro el usuario-autor, esto va a borrar todas sus publicaciones
     cuerpo = models. TextField()
     fecha = models.DateField(auto_now_add=True)
+    pais = models.CharField(max_length=30, default='N/A')
 
     def __str__(self):
         return self.titulo + ' | ' + str(self.autor)
@@ -16,3 +17,11 @@ class Articulo(models.Model):
     def get_absolute_url(self):
         return reverse('home')
     
+class Categoria(models.Model):
+    pais = models.CharField(max_length=30, default='N/A')
+
+    def __str__(self):
+        return self.pais #si agrego otra categoria tengo que sumar + ' | ' + str(self.autor)
+    
+    def get_absolute_url(self):
+        return reverse('home')

@@ -1,15 +1,25 @@
 from django import forms
-from .models import Articulo
+from .models import Articulo, Categoria
+
+#paises
+#choices = [('Argentina', 'Argentina'), ('Brasil', 'Brasil'), ('Chile', 'Chile'),]
+choices = Categoria.objects.all().values_list('pais','pais')
+lista_pais = []
+
+for item in choices:
+    lista_pais.append(item)
+
 
 class ArticuloForm(forms.ModelForm):
     class Meta: #sin esto model y fields no funciona
         model = Articulo
-        fields = ('titulo', 'titulo_tag', 'autor', 'cuerpo')
+        fields = ('titulo', 'titulo_tag', 'autor', 'pais', 'cuerpo')
 
         widgets = {
-            'titulo': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '[PAIS] Lugar - texto/copy' }), #form-control - formgroup
+            'titulo': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '[Pais] LUGAR - Texto/copy' }), #form-control - formgroup
             'titulo_tag': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Lugar'}),
             'autor': forms.Select(attrs={'class': 'form-control'}),
+            'pais': forms.Select(choices=lista_pais, attrs={'class': 'form-control', 'placeholder': 'Seleccionar' }),
             'cuerpo': forms.Textarea(attrs={'class': 'form-control'}),
         }
 

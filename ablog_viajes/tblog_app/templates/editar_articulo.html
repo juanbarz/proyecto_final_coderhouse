@@ -3,15 +3,20 @@
 {% block contenido %}
 
 
+{%if user.is_authenticated %}
+    <h1> Editar articulo </h1>
+    <br/> <br/> 
 
-<h1> Editar articulo </h1>
-<br/> <br/> 
+    <div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-secondary">Guardar cambios</button>
+    </div>
+{% else %}
 
-<div class="form-group">
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button class="btn btn-secondary">Guardar cambios</button>
-</div>
+No tenés permiso para acceder a esta pagina :(
+# AGREGAR IMAGEN # 
+{% endif %}
 
 {% endblock %}
