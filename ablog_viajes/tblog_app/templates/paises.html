@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+
+
 {% block contenido %}
 
 {% if categoria_articulo %}
@@ -7,7 +9,7 @@
     <h1> Articulos de {{ paisx }} </h1>
     <ul>
     {% for articulo in categoria_articulo %}
-        <li> [{{ articulo.pais }}] <a href="{% url 'articulo-detalle' articulo.pk %}">{{articulo.titulo}}</a> 
+        <li> <b>[{{ articulo.pais }}] <a href="{% url 'articulo-detalle' articulo.pk %}">{{articulo.titulo}}</b></a> 
         - {{articulo.autor.first_name}} {{articulo.autor.last_name}} - {{ articulo.fecha }} 
         {%if user.is_authenticated %}
         - <small><a href="{% url 'editar_articulo' articulo.pk %}">Editar</a></small>
@@ -22,4 +24,3 @@
     <h2>Esta página no existe :(</h2>
 {% endif %}
 {% endblock %}
-

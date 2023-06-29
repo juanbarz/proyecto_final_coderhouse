@@ -3,9 +3,6 @@
 
 
 {% block contenido %}
-
-
-
 <h1>{{ articulo.titulo }}</h1>
 <small> 
 Por: {{ articulo.autor.first_name}} 
@@ -13,10 +10,11 @@ Por: {{ articulo.autor.first_name}}
 {{ articulo.fecha }} 
 
 {%if user.is_authenticated %}
-<small> - <a href="{% url 'editar_articulo' articulo.pk %}">Editar</a></small> 
-<small> - <a href="{% url 'eliminar_articulo' articulo.pk %}">Eliminar</a></small> 
-</small><br/>
-
+    {% if user.id == articulo.autor.id %}  <!-- solo los autores pueden editar/eliminar sus propios post --> 
+    <small> - <a href="{% url 'editar_articulo' articulo.pk %}">Editar</a></small> 
+    <small> - <a href="{% url 'eliminar_articulo' articulo.pk %}">Eliminar</a></small> 
+        </small><br/>
+    {% endif %}
 {% endif %}
 
 <hr>

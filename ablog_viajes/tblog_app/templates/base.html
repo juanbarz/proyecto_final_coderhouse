@@ -26,6 +26,27 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
 
+        <!-- paises menu -->
+        {% if paises_menu %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Paises
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+
+            {% for item in paises_menu %}
+             <a class="dropdown-item" href="{% url 'categoria' item %}">{{ item }}</a>
+            {% endfor %}
+
+          </div>
+        </li>
+        {% else %}
+          <!--<li class="nav-item">
+            <a class="nav-link" href="{% url 'lista-paises' %}">Paises</a>
+          </li>-->
+        {% endif %}
+
           {%if user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'agregar_articulo' %}">Agregar articulo</a>

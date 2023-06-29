@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block titulo  %} Paises {% endblock %}
+
+<h1> Paises del blog </h1>
+
+    {% for item in paises_lista %}
+             <h4><a class="dropdown-item" href="{% url 'categoria' item %}">{{ item }}</a></h4>
+    {% endfor %}
+

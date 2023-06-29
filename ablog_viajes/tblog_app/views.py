@@ -1,3 +1,4 @@
+from typing import Any, Dict
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Articulo, Categoria
@@ -10,10 +11,22 @@ class HomeView(ListView):
     ordering = ['-fecha']
     #ordering = ['-id'] #se ordena por creacion de id de abajo hacia arriba, luego modificar por fecha
 
+    def get_context_data(self, *args, **kwargs):
+        paises_menu = Categoria.objects.all()
+        context = super(HomeView, self).get_context_data(*args, **kwargs)
+        context["paises_menu"] = paises_menu
+        return context
 
 class ArticuloDetailView(DetailView):
     model = Articulo
     template_name = 'articulo_detalle.html'
+
+    def get_context_data(self, *args, **kwargs):
+        paises_menu = Categoria.objects.all()
+        context = super(ArticuloDetailView, self).get_context_data(*args, **kwargs)
+        context["paises_menu"] = paises_menu
+        return context
+
 
 
 class AgregarArticuloView(CreateView):
@@ -39,6 +52,9 @@ class EliminarArticuloView(DeleteView):
     template_name = 'eliminar_articulo.html'
     success_url = reverse_lazy('home')
 
+def PaisListaView(request):
+    paises_lista = Categoria.objects.all()
+    return render(request, 'paises_lista.html',{'paises_lista':paises_lista})
 
 def PaisView(request, paisx):
     categoria_articulo = Articulo.objects.filter(pais=paisx)
