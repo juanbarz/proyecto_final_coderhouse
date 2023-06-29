@@ -18,7 +18,8 @@ class ArticuloForm(forms.ModelForm):
         widgets = {
             'titulo': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '[Pais] LUGAR - Texto/copy' }), #form-control - formgroup
             'titulo_tag': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Lugar'}),
-            'autor': forms.Select(attrs={'class': 'form-control'}),
+            'autor': forms.TextInput(attrs={'class': 'form-control', 'value': '', 'id': 'juan', 'type':'hidden'}),
+            #'autor': forms.Select(attrs={'class': 'form-control'}),
             'pais': forms.Select(choices=lista_pais, attrs={'class': 'form-control', 'placeholder': 'Seleccionar' }),
             'cuerpo': forms.Textarea(attrs={'class': 'form-control'}),
         }

@@ -18,12 +18,11 @@
         {% endif %}    
     {% endif %}
     <br/>     
-    {{articulo.cuerpo | slice:":250" | safe}} </li> 
+    {{articulo.cuerpo | slice:":250" | safe}}... <a href="{% url 'articulo-detalle' articulo.pk %}"><small>seguir leyendo</small></a></li> 
 
 {% endfor %}
 </ul>
 
 
-AGREGAR ... "SEGUIR LEYENDO"
 {% endblock %}
 

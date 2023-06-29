@@ -10,9 +10,17 @@
 <div class="form-group">
 <form method="POST">
     {% csrf_token %}
+    {{ form.media }}
     {{ form.as_p }}
     <button class="btn btn-secondary">Publicar</button>
 </div>
+
+<!-- js para cargar automaticamente el autor logueado en autor -->
+<script> 
+    var name = "{{ user.id }}";
+    document.getElementById("juan").value
+        = name;
+</script>
 
 {% else %}
 
