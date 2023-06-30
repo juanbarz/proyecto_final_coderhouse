@@ -39,5 +39,8 @@ class Perfil(models.Model):
 
     def __str__(self):
         return str(self.usuario)
+    
+    def get_absolute_url(self):
+        return reverse('home')
 
 

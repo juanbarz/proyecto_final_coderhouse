@@ -4,14 +4,11 @@
 
 
 
-<h1>Editar perfil</h1>
+<h1>Configuración de cuenta</h1>
+<h3>{{ user }}</h3></b>
+
 <br/>
-
-<b><h3>{{ user }}</h3></b>
-
-<b> Acerca de mi: </b>{{ user.perfil.bio }}
-<br/> <br/> 
-
+<br/>
 <div class="form-group">
 <form method="POST">
     {% csrf_token %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block titulo  %} Editar perfil {% endblock %}
+{% block contenido %}
+
+
+{%if user.is_authenticated %}
+    {% if user.id == perfil.id %}
+    <h1> Editar perfil </h1>
+    <br/> <br/> 
+
+    <div class="form-group">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-secondary">Guardar cambios</button>
+    </div>
+
+    {% else %}
+    [Usuario incorrecto]
+    No tenés permiso para acceder a esta pagina :(
+
+    {% endif %}
+
+{% endif %}
+
+
+
+{% endblock %}

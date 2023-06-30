@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django import forms
-
+from tblog_app.models import Perfil
 
 class RegistrateForm(UserCreationForm):
     email = forms.EmailField(widget= forms.EmailInput(attrs={'class': 'form-control'}), label="Correo electrónico")
@@ -42,3 +42,16 @@ class EditarPerfilForm(UserChangeForm):
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email') #, 'last_login', 'is_superuser', 'is_staff', 'is_active', 'date_joined')
+
+
+class PaginaPerfilForm(forms.ModelForm):
+    class Meta: 
+        model = Perfil
+        fields = ('bio', 'imagen_perfil', 'facebook', 'instagram', 'sitio_web')
+        widgets = {
+                'bio': forms.Textarea(attrs={'class': 'form-control'}),
+                #'imagen_perfil': forms.TextInput(attrs={'class': 'form-control'}),
+                'facebook': forms.TextInput(attrs={'class': 'form-control'}),
+                'instagram': forms.TextInput(attrs={'class': 'form-control'}),
+                'sitio_web': forms.TextInput(attrs={'class': 'form-control'}),
+            }
