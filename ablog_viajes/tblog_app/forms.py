@@ -13,7 +13,7 @@ for item in choices:
 class ArticuloForm(forms.ModelForm):
     class Meta: #sin esto model y fields no funciona
         model = Articulo
-        fields = ('titulo', 'titulo_tag', 'autor', 'pais', 'cuerpo')
+        fields = ('titulo', 'titulo_tag', 'autor', 'pais', 'cuerpo', 'imagen_header')
 
         widgets = {
             'titulo': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '[Pais] LUGAR - Texto/copy' }), #form-control - formgroup

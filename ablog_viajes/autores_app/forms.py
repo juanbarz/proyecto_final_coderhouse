@@ -1,6 +1,7 @@
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django import forms
+
 
 class RegistrateForm(UserCreationForm):
     email = forms.EmailField(widget= forms.EmailInput(attrs={'class': 'form-control'}), label="Correo electrónico")
@@ -40,4 +41,4 @@ class EditarPerfilForm(UserChangeForm):
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email')# 'password') , 'last_login', 'is_superuser', 'is_staff', 'is_active', 'date_joined') 
+        fields = ('username', 'first_name', 'last_name', 'email') #, 'last_login', 'is_superuser', 'is_staff', 'is_active', 'date_joined')

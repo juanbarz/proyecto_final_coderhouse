@@ -3,6 +3,11 @@
 
 
 {% block contenido %}
+
+{% if articulo.imagen_header %}
+<img src="{{ articulo.imagen_header.url }}"> </br></br>
+{% endif %}
+
 <h1>{{ articulo.titulo }}</h1>
 <small> 
 Por: {{ articulo.autor.first_name}} 
@@ -19,8 +24,32 @@ Por: {{ articulo.autor.first_name}}
 
 <hr>
 <br/>
+
 {{ articulo.cuerpo | safe}}
-<br/><br/>
-<a href="{% url 'home' %}" class="btn btn-secondary">Volver</a>
+<br/>
+<!--<a href="{% url 'home' %}" class="btn btn-secondary">Volver</a>-->
+
+<br/>
+ 
+
+
+<div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-2">
+        {% if articulo.autor.perfil.imagen_perfil %}
+            <img src="{{ articulo.autor.perfil.imagen_perfil.url }}" width=190  height=190 class="rounded-circle" class="card-img">
+        {% endif %}
+      </div>
+      <div class="col-md-10">
+        <div class="card-body">
+          <h5 class="card-title">{{ articulo.autor.first_name}} {{articulo.autor.last_name }}</h5>
+          <p class="card-text">{{ articulo.autor.perfil.bio }} </p>
+          <p class="card-text"><small class="text-muted">Miembro desde {{ user.date_joined }} {{ articulo.autor_url }} </small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
 
 {% endblock %}

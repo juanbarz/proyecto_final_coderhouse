@@ -5,6 +5,11 @@
 
 
 <h1>Editar perfil</h1>
+<br/>
+
+<b><h3>{{ user }}</h3></b>
+
+<b> Acerca de mi: </b>{{ user.perfil.bio }}
 <br/> <br/> 
 
 <div class="form-group">
@@ -13,5 +18,6 @@
     {{ form.as_p }}
     <button class="btn btn-secondary">Guardar Cambios</button>
 </div>
+
 
 {% endblock %}

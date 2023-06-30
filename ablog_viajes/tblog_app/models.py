@@ -9,9 +9,9 @@ class Articulo(models.Model):
     titulo_tag = models.CharField(max_length=255)
     autor = models.ForeignKey(User, on_delete=models.CASCADE) #si borro el usuario-autor, esto va a borrar todas sus publicaciones
     cuerpo = RichTextField(blank=True, null=True)
-    #cuerpo = models. TextField()
     fecha = models.DateField(auto_now_add=True)
     pais = models.CharField(max_length=30, default='N/A')
+    imagen_header = models.ImageField(null=True, blank=True, upload_to="imagenes/")
     #megusta = models.ManyToManyFIeld(User, related_name)
 
     def __str__(self):
@@ -28,3 +28,16 @@ class Categoria(models.Model):
     
     def get_absolute_url(self):
         return reverse('home')
+    
+class Perfil(models.Model):
+    usuario = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    bio = models.TextField()
+    imagen_perfil = models.ImageField(null=True, blank=True, upload_to="imagenes/perfil/")
+    facebook = models.CharField(max_length=255, null=True, blank=True)
+    instagram = models.CharField(max_length=255, null=True, blank=True)
+    sitio_web = models.CharField(max_length=255, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.usuario)
+
+
