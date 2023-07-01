@@ -42,5 +42,14 @@ class Perfil(models.Model):
     
     def get_absolute_url(self):
         return reverse('home')
+    
+class Comentarios(models.Model):
+    articulo = models.ForeignKey(Articulo, related_name="comentario", on_delete=models.CASCADE) # si borro un articulo, se borran los comentariso
+    nombre = models.CharField(max_length=155)
+    cuerpo = models.TextField()
+    fecha = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return '%s - %s' % (self.articulo.titulo, self.nombre)
 
 

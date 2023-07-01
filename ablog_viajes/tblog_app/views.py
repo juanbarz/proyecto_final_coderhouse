@@ -1,8 +1,8 @@
 from typing import Any, Dict
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Articulo, Categoria
-from .forms import ArticuloForm, EditarForm
+from .models import Articulo, Categoria, Comentarios
+from .forms import ArticuloForm, EditarForm, AgregarComentarioForm
 from django.urls import reverse_lazy
 
 class HomeView(ListView):
@@ -59,3 +59,21 @@ def PaisListaView(request):
 def PaisView(request, paisx):
     categoria_articulo = Articulo.objects.filter(pais=paisx)
     return render(request, 'paises.html',{'paisx':paisx.title(), 'categoria_articulo':categoria_articulo})
+
+
+def article_view(request):
+    return render(request, 'article.html')
+
+class AgregarComentarioView(CreateView):
+    model = Comentarios
+    form_class = AgregarComentarioForm
+    template_name = 'agregar_comentario.html'
+    def form_valid(self, form):
+        form.instance.articulo_id = self.kwargs['pk']
+        return super().form_valid(form)
+    success_url = reverse_lazy('home')
+    
+
+def about_me_view(request):
+    return render(request, 'acerca_de.html')
+

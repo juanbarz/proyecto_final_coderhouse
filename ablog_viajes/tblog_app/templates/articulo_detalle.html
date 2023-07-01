@@ -30,10 +30,10 @@ Por: {{ articulo.autor.first_name}}
 <br/>
 <!--<a href="{% url 'home' %}" class="btn btn-secondary">Volver</a>-->
 
+
+
 <br/>
- 
-
-
+<br/>
 <div class="card mb-3">
     <div class="row no-gutters">
       <div class="col-md-2">
@@ -53,8 +53,24 @@ Por: {{ articulo.autor.first_name}}
     </div>
   </div>
   
+  <br/>
 
+  <h2> Comentarios </h2>
+  
+  {% if not articulo.comentario.all %}
+          Sin comentarios hasta ahora | <a href="{% url 'agregar_comentario' articulo.pk %}"> Agregar comentarios </a>
+  {% else %}
+          
+          {% for comentarios in articulo.comentario.all %}
+            {{ comentarios.nombre }} | 
+            {{ comentarios.fecha }}
+            </br>
+            {{ comentarios.cuerpo }}
+            </br> </br>
+          {% endfor %}  
+          <a href="{% url 'agregar_comentario' articulo.pk %}"> Agregar comentarios </a> </br>        
+  {% endif %}
 
-
+  <hr>
 
 {% endblock %}

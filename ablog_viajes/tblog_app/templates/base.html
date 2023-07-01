@@ -22,7 +22,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-    
+      
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
 
@@ -37,6 +37,7 @@
 
             {% for item in paises_menu %}
              <a class="dropdown-item" href="{% url 'categoria' item %}">{{ item }}</a>
+             
             {% endfor %}
 
           </div>
@@ -47,7 +48,7 @@
           </li>-->
         {% endif %}
 
-          {%if user.is_authenticated %}
+          {%if user.is_authenticated and user.username == 'juanignacio' or user.username == 'usuario_prueba' %} <!-- CAMBIAR A ADMIN-->
           <li class="nav-item">
             <a class="nav-link" href="{% url 'agregar_articulo' %}">Agregar articulo</a>
           </li>
@@ -55,19 +56,23 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'agregar_pais' %}">Agregar país</a>
           </li>
+          {% else %}
 
+          {% endif %}
+
+          {%if user.is_authenticated %}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Mi perfil
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               
-
+          
           {% if user.perfil.id %}
               <a class="dropdown-item" href="{% url 'pagina_editar_perfil' user.perfil.id %}">Editar mi perfil</a>
               <a class="dropdown-item" href="{% url 'pagina_perfil' user.perfil.id %}">Ir mi perfil</a>
             {% else %}
-                <a class="dropdown-item" href="{% url 'crear_perfil' %}">Crear mi perfil</a>
+              <a class="dropdown-item" href="{% url 'crear_perfil' %}">Crear mi perfil</a>
             {% endif %}
                   
               <a class="dropdown-item" href="{% url 'editar_perfil' %}">Configuracion de cuenta</a>

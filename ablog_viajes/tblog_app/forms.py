@@ -1,5 +1,5 @@
 from django import forms
-from .models import Articulo, Categoria
+from .models import Articulo, Categoria, Comentarios
 
 #paises
 #choices = [('Argentina', 'Argentina'), ('Brasil', 'Brasil'), ('Chile', 'Chile'),]
@@ -34,4 +34,14 @@ class EditarForm(forms.ModelForm): #para que no se pueda editar el autor
             'titulo_tag': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Lugar'}),
             #'autor': forms.Select(attrs={'class': 'form-control'}),
             'cuerpo': forms.Textarea(attrs={'class': 'form-control'}),
+        }
+
+class AgregarComentarioForm(forms.ModelForm): 
+    class Meta: 
+        model = Comentarios
+        fields = ('nombre', 'cuerpo')
+
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control'}), #form-control - formgroup
+            'cuerpo': forms.Textarea(attrs={'class': 'form-control', 'placeholder': '¿Que te pareció este artículo? ¿Que otro lugar me recomendas para viajar?'}),
         }
