@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
-
 {% block contenido %}
-
-
-
+{% load static %}
+<img src='{% static "tblog_app/assets/img/home-bg.png" %}' class="img-fluid" alt="Responsive image">
+<br/>   <br/> 
 <h1> Articulos </h1>
-
+<hr>
 <ul>
 {% for articulo in object_list %}
     

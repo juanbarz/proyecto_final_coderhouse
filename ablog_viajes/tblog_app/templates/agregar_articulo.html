@@ -5,7 +5,8 @@
 
 {%if user.is_authenticated %}
 <h1> Agregar articulo </h1>
-<br/> <br/> 
+<hr>
+
 
 <div class="form-group">
 <form method="POST" enctype="multipart/form-data">
@@ -25,7 +26,7 @@
 {% else %}
 
 No tenés permiso para acceder a esta pagina :(
-# AGREGAR IMAGEN # 
+
 {% endif %}
 
 {% endblock %}

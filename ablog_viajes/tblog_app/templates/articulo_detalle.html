@@ -32,8 +32,8 @@ Por: {{ articulo.autor.first_name}}
 
 
 
-<br/>
-<br/>
+
+
 <div class="card mb-3">
     <div class="row no-gutters">
       <div class="col-md-2">
@@ -68,9 +68,9 @@ Por: {{ articulo.autor.first_name}}
             {{ comentarios.cuerpo }}
             </br> </br>
           {% endfor %}  
-          <a href="{% url 'agregar_comentario' articulo.pk %}"> Agregar comentarios </a> </br>        
+          <a href="{% url 'agregar_comentario' articulo.pk %}"> Agregar comentarios </a> </br>      <br/>  <br/>    
   {% endif %}
 
   <hr>
-
+  <br/>  <br/>
 {% endblock %}

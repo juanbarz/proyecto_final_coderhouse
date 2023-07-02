@@ -30,8 +30,8 @@ class EditarForm(forms.ModelForm): #para que no se pueda editar el autor
         fields = ('titulo', 'titulo_tag', 'cuerpo')
 
         widgets = {
-            'titulo': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '[PAIS] Lugar - texto/copy' }), #form-control - formgroup
-            'titulo_tag': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Lugar'}),
+            'titulo': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'LUGAR - texto/copy' }), #form-control - formgroup
+            'titulo_tag': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'LUGAR'}),
             #'autor': forms.Select(attrs={'class': 'form-control'}),
             'cuerpo': forms.Textarea(attrs={'class': 'form-control'}),
         }
